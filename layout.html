@@ -52,8 +52,59 @@ nav a:hover {
 article {
   margin-bottom: 1em;
 }
-/*A tady je k tomuto CSS taky HTML*/
+
+/*Poté se testuje, do kdy je stránka čitelná a při vetších obrazovkách děláme první pravidla (pro navigační menu):*/
+@media screen and (min-width: 40em) {
+  article {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 20px;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    flex: 1;
+  }
+}
+
+/*Poté dále zvětšujeme šířku, dokud nechceme další MQ (přidáme sloupec, grid, odstraníme margin-bottom a přidáme border*/
+@media screen and (min-width: 70em) {
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 20px;
+  }
+
+  article {
+    margin-bottom: 0;
+  }
+
+  footer {
+    border-top: 1px solid #ccc;
+    margin-top: 2em;
+  }
+}
+
+/*Často nepoužijeme MQ, protože nám bude stačit jenom grid, když chceme dělat karty produktů viz:*/
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.grid li {
+  border: 1px solid #666;
+  padding: 10px;
+} 
 </head>
+
+/*A tady je k tomuto CSS taky HTML*/
 <body>
   <div class="wrapper">
     <header>
@@ -85,61 +136,9 @@ article {
     </main>
     <footer><p>&copy;2019</p></footer>
   </div>
-</body>
-<!--
-Poté se testuje, do kdy je stránka čitelná a při vetších obrazovkách děláme první pravidla (pro navigační menu):
-@media screen and (min-width: 40em) {
-  article {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    column-gap: 20px;
-  }
 
-  nav ul {
-    display: flex;
-  }
-
-  nav li {
-    flex: 1;
-  }
-}
-Poté dále zvětšujeme šířku, dokud nechceme další MQ (přidáme sloupec, grid, odstraníme margin-bottom a přidáme border)
-@media screen and (min-width: 70em) {
-  main {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    column-gap: 20px;
-  }
-
-  article {
-    margin-bottom: 0;
-  }
-
-  footer {
-    border-top: 1px solid #ccc;
-    margin-top: 2em;
-  }
-}
-
-Často nepoužijeme MQ, protože nám bude stačit jenom grid, když chceme dělat karty produktů viz:
-.grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-
-.grid li {
-  border: 1px solid #666;
-  padding: 10px;
-} 
-</style> 
-</head>
-<body>
-A následující HTML:
-<ul class="grid">
+  /* Grid nastavení */
+  <ul class="grid">
   <li>
     <h2>Card 1</h2>
     <p>…</p>
@@ -161,6 +160,5 @@ A následující HTML:
     <p>…</p>
   </li>
 </ul>
-Pokud budu chtít zlepšit v tomto znalosti: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/rwd_skills
--->
+/*Pokud budu chtít zlepšit v tomto znalosti: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/rwd_skills*/
 </body>
